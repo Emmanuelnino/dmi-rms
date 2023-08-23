@@ -112,6 +112,20 @@ async function deleteUser(req, res) {
 
     }
 }
+async function deleteUser(req, res) {
+
+    const { id } = req.params;
+    try {
+        await prisma.result.delete({
+            where: { id: parseInt(id) },
+        });
+        res.status(200).json("Result deleted successfully");
+    } catch (error) {
+        console.error('Error deleting user:', error);
+        res.status(500).json({ error: 'An error occurred while deleting result.' });
+
+    }
+}
 
 async function deleteUser(req, res) {
 
