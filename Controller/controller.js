@@ -113,19 +113,24 @@ async function deleteUser(req, res) {
     }
 }
 
-async function updateUser(req, res) {
+async function deleteUser(req, res) {
 
     const { id } = req.params;
-    const { regno, name, password } = req.body
+    const { regno, code, semester, name, gpa, mark } = req.body
 
 
     try {
         const updateUser = await prisma.student.update({
             where: { id: parseInt(id) },
             data: {
-                name: name,
                 regno: regno,
-                password: password
+                name: name,
+                code: code,
+                semester: semester,
+                gpa: gpa,
+                mark: mark,
+                
+                
             },
         });
         res.status(200).json(updateUser);
