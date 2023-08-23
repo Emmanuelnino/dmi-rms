@@ -9,5 +9,6 @@ router.post('/result',Results);
 router.put('/student/:id',updateUser);
 router.delete('/student/:id',deleteUser);
 router.delete('/lecturer/:id',deleteUser);
+router.delete('/result/:id', deleteUser);
 
 module.exports = router; 
