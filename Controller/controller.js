@@ -105,7 +105,7 @@ async function deleteUser(req, res) {
         await prisma.lecturer.delete({
             where: { id: parseInt(id) },
         });
-        res.status(200).json("User deleted successfully");
+        res.status(200).json("Lecturer deleted successfully");
     } catch (error) {
         console.error('Error deleting user:', error);
         res.status(500).json({ error: 'An error occurred while deleting user.' });
@@ -113,5 +113,26 @@ async function deleteUser(req, res) {
     }
 }
 
+async function updateUser(req, res) {
 
+    const { id } = req.params;
+    const { regno, name, password } = req.body
+
+
+    try {
+        const updateUser = await prisma.student.update({
+            where: { id: parseInt(id) },
+            data: {
+                name: name,
+                regno: regno,
+                password: password
+            },
+        });
+        res.status(200).json(updateUser);
+    } catch (error) {
+        console.error('Error updating user:', error);
+        res.status(500).json({ error: 'An error occurred while updating user.' });
+    }
+
+}
 module.exports = { Student, Lecturer, Results, updateUser, deleteUser };
