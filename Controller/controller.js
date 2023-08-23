@@ -120,7 +120,7 @@ async function deleteUser(req, res) {
 
 
     try {
-        const updateUser = await prisma.student.update({
+        const updateUser = await prisma.result.update({
             where: { id: parseInt(id) },
             data: {
                 regno: regno,
@@ -135,8 +135,8 @@ async function deleteUser(req, res) {
         });
         res.status(200).json(updateUser);
     } catch (error) {
-        console.error('Error updating user:', error);
-        res.status(500).json({ error: 'An error occurred while updating user.' });
+        console.error('Error updating result:', error);
+        res.status(500).json({ error: 'An error occurred while updating result.' });
     }
 
 }
