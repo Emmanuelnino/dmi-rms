@@ -124,13 +124,13 @@ async function deleteUser(req, res) {
             where: { id: parseInt(id) },
             data: {
                 regno: regno,
-                name: name,
                 code: code,
                 semester: semester,
+                name: name,
                 gpa: gpa,
-                mark: mark,
-                
-                
+                mark: mark
+
+
             },
         });
         res.status(200).json(updateUser);
