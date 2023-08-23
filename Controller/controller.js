@@ -116,13 +116,13 @@ async function deleteUser(req, res) {
 
     const { id } = req.params;
     try {
-        await prisma.result.delete({
+        await prisma.student.delete({
             where: { id: parseInt(id) },
         });
-        res.status(200).json("Result deleted successfully");
+        res.status(200).json("Student deleted successfully");
     } catch (error) {
-        console.error('Error deleting user:', error);
-        res.status(500).json({ error: 'An error occurred while deleting result.' });
+        console.error('Error deleting student:', error);
+        res.status(500).json({ error: 'An error occurred while deleting student.' });
 
     }
 }
@@ -134,7 +134,7 @@ async function deleteUser(req, res) {
 
 
     try {
-        const updateUser = await prisma.result.update({
+        const deleteUser = await prisma.result.delete({
             where: { id: parseInt(id) },
             data: {
                 regno: regno,
@@ -144,13 +144,12 @@ async function deleteUser(req, res) {
                 gpa: gpa,
                 mark: mark
 
-
             },
         });
-        res.status(200).json(updateUser);
+        res.status(200).json(deleteUser);
     } catch (error) {
-        console.error('Error updating result:', error);
-        res.status(500).json({ error: 'An error occurred while updating result.' });
+        console.error('Error deleting result:', error);
+        res.status(500).json({ error: 'An error occurred while deleting result.' });
     }
 
 }
